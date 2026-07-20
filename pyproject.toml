@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "memory-mcp"
+version = "0.1.0"
+description = "Filesystem-backed persistent memory for AI agents, exposed over the Model Context Protocol (MCP)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mohamed Ashrey" }]
+keywords = ["mcp", "model-context-protocol", "ai-agents", "memory", "llm", "claude"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/M-Ashrey/memory-mcp"
+Repository = "https://github.com/M-Ashrey/memory-mcp"
+"Companion Kit" = "https://github.com/M-Ashrey/claude-mcp-starter-kit"
+
+[project.scripts]
+memory-mcp = "memory_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["memory_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
