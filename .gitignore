@@ -23,6 +23,9 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 
+# Environment variables
+.env
+
 # Local memory store (do not commit personal data)
 .memory-mcp/
 *.store.json

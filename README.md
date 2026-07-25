@@ -16,6 +16,44 @@ Most agents forget everything between runs. `memory-mcp` gives any MCP-compatibl
 | `memory_list` | List all keys, optionally filtered by tag. |
 | `memory_delete` | Remove an entry by key. |
 
+## Example
+
+What the agent sees when it calls `memory_write`, then `memory_read`, then `memory_search` (these are the literal text responses the tools return over MCP):
+
+```
+> memory_write(key="project-x-decision", content="We chose Postgres over SQLite for project X because we need concurrent writes.", tags=["project-x", "decisions"])
+Stored 'project-x-decision' (updated_at=2026-07-25T20:43:59Z). Tags: project-x, decisions
+
+> memory_read(key="project-x-decision")
+key: project-x-decision
+tags: project-x, decisions
+created_at: 2026-07-25T20:43:59Z
+updated_at: 2026-07-25T20:43:59Z
+---
+We chose Postgres over SQLite for project X because we need concurrent writes.
+
+> memory_search(query="postgres")
+1 match(es) for 'postgres':
+- [1] project-x-decision: We chose Postgres over SQLite for project X because we need concurrent writes.
+```
+
+On disk, that entry is stored as plain JSON (`~/.memory-mcp/store.json` by default):
+
+```json
+{
+  "version": 1,
+  "entries": [
+    {
+      "key": "project-x-decision",
+      "content": "We chose Postgres over SQLite for project X because we need concurrent writes.",
+      "tags": ["project-x", "decisions"],
+      "created_at": "2026-07-25T20:43:59Z",
+      "updated_at": "2026-07-25T20:43:59Z"
+    }
+  ]
+}
+```
+
 ## Install
 
 ```bash
@@ -65,6 +103,12 @@ The store logic (`memory_mcp/store.py`) has no third-party dependencies and its 
 ## Related
 
 Part of a small set of AI-agent tooling — see also the [Claude MCP starter kit](https://github.com/M-Ashrey/claude-mcp-starter-kit).
+
+## Contributing
+
+Bug reports and pull requests are welcome at
+[github.com/M-Ashrey/memory-mcp/issues](https://github.com/M-Ashrey/memory-mcp/issues).
+See [SECURITY.md](SECURITY.md) to report a vulnerability privately.
 
 ## License
 
