@@ -104,6 +104,10 @@ The store logic (`memory_mcp/store.py`) has no third-party dependencies and its 
 
 Part of a small set of AI-agent tooling — see also the [Claude MCP starter kit](https://github.com/M-Ashrey/claude-mcp-starter-kit).
 
+## Support this work
+
+memory-mcp is free and MIT licensed. If it's useful to you, you can help keep it maintained through [GitHub Sponsors](https://github.com/sponsors/M-Ashrey) or [Ko-fi](https://ko-fi.com/ashrey122).
+
 ## Contributing
 
 Bug reports and pull requests are welcome at
